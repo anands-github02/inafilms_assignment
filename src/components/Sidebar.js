@@ -18,21 +18,20 @@ export default function Sidebar() {
       link: "document",
     },
   ];
- 
 
   return (
     <Box
       bg="black"
-      w="15vw"
+      w="20vw"
       h="100vh"
       display="flex"
       color="whiteAlpha.900"
       flexDirection={"column"}
       position="fixed"
-      borderRight="5px solid #009eb5"
+      borderRight="5px solid teal"
     >
       <Box>
-        <Box h="10vh" p="5">
+        <Box bg={'teal.300'} h="10vh" p="5">
           <Center fontSize={"2xl"}>InaFilms</Center>
         </Box>
         <Divider />
@@ -40,16 +39,16 @@ export default function Sidebar() {
         {items.map((sideItem) => {
           return (
             <Link to={`/${sideItem.link}`}>
-              <SidebarItem item={sideItem.item}  />
+              <SidebarItem item={sideItem.item} />
             </Link>
           );
         })}
       </Box>
       <Spacer />
-      <Box h="5vh" mt="3vh">
-      <Divider />
+      <Box h="5vh" mt="3vh"  bg={'teal.300'}>
+        <Divider />
 
-        <Center>Sachidananda MG</Center>
+        <Center >Sachidananda MG</Center>
       </Box>
     </Box>
   );

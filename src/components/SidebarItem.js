@@ -5,14 +5,16 @@ export default function SidebarItem(props) {
     <Box
       display={"flex"}
       flexDir="row"
+      alignItems={'center'}
+      justifyContent={'center'}
       h="1vh"
       p="5vh"
       bg="black"
-      _hover={{ bg: "gray" }}
-      _focus={{ bg: "gray" }}
+      _hover={{ bg: "teal" }}
+      _focus={{ bg: "teal" }}
     >
       {props.icon}
-      <Box ml="10" ><Center>{props.item}</Center></Box>
+      <Box><Center>{props.item}</Center></Box>
     </Box>
   );
 }
