@@ -16,8 +16,10 @@ function CompanyTable() {
   const data = [{ id: "", name: "", code: " " }];
 
   const [companyData, setCompanyData] = useState(data);
-  window.localStorage.setItem("company", JSON.stringify(data)); //comment this line.
-
+  // window.localStorage.setItem("company", JSON.stringify(data)); //comment this line.
+  if (localStorage.getItem("company") === null) {
+    window.localStorage.setItem("company", JSON.stringify(data));
+  }
   let dataForCompanyTableRows = JSON.parse(
     window.localStorage.getItem("company")
   );

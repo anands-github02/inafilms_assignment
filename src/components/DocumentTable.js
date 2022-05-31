@@ -13,11 +13,14 @@ import {
 
 function DocumentTable() {
   const data = [{ id: "", name: "", code: "" }];
-
   const [documentData, setDocumentData] = useState(data);
-  window.localStorage.setItem("document", JSON.stringify(data));  //comment this line.
-
-  let dataForDocumentTableRows=JSON.parse(window.localStorage.getItem('document'));
+  if (localStorage.getItem("document") === null) {
+    window.localStorage.setItem("document", JSON.stringify(data));
+  }
+  // window.localStorage.setItem("document", JSON.stringify(data));  //comment this line.
+  let dataForDocumentTableRows = JSON.parse(
+    window.localStorage.getItem("document")
+  );
   const tableRows = dataForDocumentTableRows.map((info) => {
     return (
       <Tr>
@@ -30,14 +33,17 @@ function DocumentTable() {
 
   const addRows = (data) => {
     const totalDocuments = documentData.length;
-    console.log(totalDocuments)
+    console.log(totalDocuments);
     data.id = totalDocuments;
     const updatedDocumentData = [...documentData];
-    console.log(updatedDocumentData)
+    console.log(updatedDocumentData);
 
     updatedDocumentData.push(data);
     setDocumentData(updatedDocumentData);
-    window.localStorage.setItem('document', JSON.stringify(updatedDocumentData));
+    window.localStorage.setItem(
+      "document",
+      JSON.stringify(updatedDocumentData)
+    );
 
     console.log(documentData);
   };
@@ -45,9 +51,11 @@ function DocumentTable() {
   return (
     <Box>
       <DocumentForm func={addRows} />
-      <TableContainer mt={'10vh'}>
-      <Box bg={'teal'} fontSize={'30'}><center>Document List </center></Box>
-        <Table variant="striped" colorScheme="teal" size='lg'>
+      <TableContainer mt={"10vh"}>
+        <Box bg={"teal"} fontSize={"30"}>
+          <center>Document List </center>
+        </Box>
+        <Table variant="striped" colorScheme="teal" size="lg">
           <Thead>
             <Tr>
               <Th>Document ID</Th>
@@ -55,10 +63,9 @@ function DocumentTable() {
               <Th>Document Code</Th>
             </Tr>
           </Thead>
-          {dataForDocumentTableRows&&<Tbody>{tableRows}</Tbody>}
+          {dataForDocumentTableRows && <Tbody>{tableRows}</Tbody>}
         </Table>
       </TableContainer>
-      
     </Box>
   );
 }
