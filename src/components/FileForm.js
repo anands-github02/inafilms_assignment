@@ -17,11 +17,9 @@ export default function FileForm() {
   const generate = () => {
     setValue(uuidv4);
   };
-  let companyItems=[{name:"",code: " "}]
-  companyItems.push(JSON.parse(window.localStorage.getItem("company")));
-  let documentItems=[{name:"",code: " "}]
+  let companyItems=JSON.parse(window.localStorage.getItem("company"));
 
-  documentItems.push(JSON.parse(window.localStorage.getItem("document")));
+  let documentItems= JSON.parse(window.localStorage.getItem("document"));
 console.log(companyItems);
 console.log(documentItems);
   const handleClick = () => {
