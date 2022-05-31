@@ -17,10 +17,13 @@ export default function FileForm() {
   const generate = () => {
     setValue(uuidv4);
   };
+  let companyItems=[{name:"",code: " "}]
+  companyItems.push(JSON.parse(window.localStorage.getItem("company")));
+  let documentItems=[{name:"",code: " "}]
 
-  let companyItems = JSON.parse(window.localStorage.getItem("company"));
-  let documentItems = JSON.parse(window.localStorage.getItem("document"));
-
+  documentItems.push(JSON.parse(window.localStorage.getItem("document")));
+console.log(companyItems);
+console.log(documentItems);
   const handleClick = () => {
     generate();
   };
@@ -30,11 +33,11 @@ export default function FileForm() {
         <Box mr="3vw" px="5" w="25vw" py="2" color="white" bg={"teal.300"}>
           Company Name
         </Box>
-        {companyItems&&<Select borderColor={"blackAlpha.400"} maxW="60vw">
+        <Select borderColor={"blackAlpha.400"} maxW="60vw">
           {companyItems.map((data) => {
             return <option>{data.name}</option>;
           })}
-        </Select>}
+        </Select>
       </Box>
       <Box display={"flex"} mb="5">
         <Box mr="3vw" w="25vw" px="6" py="2" color="white" bg={"teal.300"}>
@@ -58,11 +61,11 @@ export default function FileForm() {
         <Box mr="3vw" w="25vw" px="5" py="2" color="white" bg={"teal.300"}>
           Document Type
         </Box>
-        {documentItems&&<Select borderColor={"blackAlpha.400"} maxW="60vw">
+        <Select borderColor={"blackAlpha.400"} maxW="60vw">
           {documentItems.map((data) => {
             return <option>{data.name}</option>;
           })}
-        </Select>}
+        </Select>
       </Box>
       <Box display={"flex"} mb="5">
         <Box mr="3vw" w="25vw" px="6" py="2" color="white" bg={"teal.300"}>
