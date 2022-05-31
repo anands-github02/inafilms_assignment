@@ -15,7 +15,7 @@ function DocumentTable() {
   const data = [{ id: "", name: "", code: "" }];
 
   const [documentData, setDocumentData] = useState(data);
-  // window.localStorage.setItem("document", JSON.stringify(data));  
+  window.localStorage.setItem("document", JSON.stringify(data));  //comment this line.
 
   let dataForDocumentTableRows=JSON.parse(window.localStorage.getItem('document'));
   const tableRows = dataForDocumentTableRows.map((info) => {
