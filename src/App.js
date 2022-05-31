@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import Company from "./pages/Company";
 import Document from "./pages/Document";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (
