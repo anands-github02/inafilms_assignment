@@ -13,15 +13,21 @@ const DatePick = () => {
 
 export default function FileForm() {
   const [value, setValue] = useState();
+  const [submitting, setSubmitting]=useState(false)
 
+  const handleSubmit=()=>{
+    if(value){
+      setSubmitting(true);
+    }
+    
+  }
   const generate = () => {
     setValue(uuidv4);
   };
   let companyItems=JSON.parse(window.localStorage.getItem("company"));
 
   let documentItems= JSON.parse(window.localStorage.getItem("document"));
-console.log(companyItems);
-console.log(documentItems);
+
   const handleClick = () => {
     generate();
   };
@@ -83,11 +89,11 @@ console.log(documentItems);
           {" "}
           Cancel
         </Button>
-        <Button ml="10" mt="10" maxW="30vw" _hover={{ bg: "teal.300" }}>
-          {" "}
+        <Button ml="10" mt="10" maxW="30vw" _hover={{ bg: "teal.300" }} onClick={handleSubmit}>
           Submit
         </Button>
       </Box>
+      {submitting&&<Box fontSize={40}>Thank you for your response</Box>}
     </Box>
   );
 }
