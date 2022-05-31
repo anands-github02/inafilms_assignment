@@ -12,15 +12,27 @@ import {
 } from "@chakra-ui/react";
 
 function CompanyTable() {
-  const data = [{ id: '', name: "", code: " " }];
+  
+  const data = [{ id: "", name: "", code: " " }];
+
   const [companyData, setCompanyData] = useState(data);
 
-  const tableRows = companyData.map((info) => {
+  let dataForCompanyTableRows = JSON.parse(
+    window.localStorage.getItem("company")
+  );
+
+  const tableRows = dataForCompanyTableRows.map((info) => {
     return (
       <Tr>
-        <Td><center>{info.id}</center></Td>
-        <Td><center>{info.name}</center></Td>
-        <Td><center>{info.code}</center></Td>
+        <Td>
+          <center>{info.id}</center>
+        </Td>
+        <Td>
+          <center>{info.name}</center>
+        </Td>
+        <Td>
+          <center>{info.code}</center>
+        </Td>
       </Tr>
     );
   });
@@ -31,6 +43,7 @@ function CompanyTable() {
     const updatedCompanyData = [...companyData];
     updatedCompanyData.push(data);
     setCompanyData(updatedCompanyData);
+    window.localStorage.setItem("company", JSON.stringify(updatedCompanyData));
   };
 
   return (
@@ -38,10 +51,11 @@ function CompanyTable() {
       <CompanyForm func={addRows} />
 
       <TableContainer mt={20}>
-      <Box bg={'teal'} fontSize={'30'}><center>Company List </center></Box>
+        <Box bg={"teal"} fontSize={"30"}>
+          <center>Company List </center>
+        </Box>
 
-        <Table variant="striped" colorScheme="teal" size='lg'>
-
+        <Table variant="striped" colorScheme="teal" size="lg">
           <Thead>
             <Tr>
               <Th>Company ID</Th>
@@ -49,13 +63,10 @@ function CompanyTable() {
               <Th>Company Code</Th>
             </Tr>
           </Thead>
-          <Tbody>{tableRows}</Tbody>
+          {dataForCompanyTableRows&&<Tbody>{tableRows}</Tbody>}
         </Table>
       </TableContainer>
-      {console.log(companyData)}
     </Box>
-  
-    
   );
 }
 

@@ -13,9 +13,11 @@ import {
 
 function DocumentTable() {
   const data = [{ id: "", name: "", code: "" }];
-  const [documentData, setDocumentData] = useState(data);
 
-  const tableRows = documentData.map((info) => {
+  const [documentData, setDocumentData] = useState(data);
+  
+  let dataForDocumentTableRows=JSON.parse(window.localStorage.getItem('document'));
+  const tableRows = dataForDocumentTableRows.map((info) => {
     return (
       <Tr>
         <Td>{info.id}</Td>
@@ -34,6 +36,8 @@ function DocumentTable() {
 
     updatedDocumentData.push(data);
     setDocumentData(updatedDocumentData);
+    window.localStorage.setItem('document', JSON.stringify(updatedDocumentData));
+
     console.log(documentData);
   };
 
@@ -50,7 +54,7 @@ function DocumentTable() {
               <Th>Document Code</Th>
             </Tr>
           </Thead>
-          <Tbody>{tableRows}</Tbody>
+          {dataForDocumentTableRows&&<Tbody>{tableRows}</Tbody>}
         </Table>
       </TableContainer>
       
