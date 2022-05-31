@@ -31,11 +31,11 @@ console.log(documentItems);
         <Box mr="3vw" px="5" w="25vw" py="2" color="white" bg={"teal.300"}>
           Company Name
         </Box>
-        <Select borderColor={"blackAlpha.400"} maxW="60vw">
+        {companyItems&&<Select borderColor={"blackAlpha.400"} maxW="60vw">
           {companyItems.map((data) => {
             return <option>{data.name}</option>;
           })}
-        </Select>
+        </Select>}
       </Box>
       <Box display={"flex"} mb="5">
         <Box mr="3vw" w="25vw" px="6" py="2" color="white" bg={"teal.300"}>
@@ -59,11 +59,11 @@ console.log(documentItems);
         <Box mr="3vw" w="25vw" px="5" py="2" color="white" bg={"teal.300"}>
           Document Type
         </Box>
-        <Select borderColor={"blackAlpha.400"} maxW="60vw">
+        {documentItems&&<Select borderColor={"blackAlpha.400"} maxW="60vw">
           {documentItems.map((data) => {
             return <option>{data.name}</option>;
           })}
-        </Select>
+        </Select>}
       </Box>
       <Box display={"flex"} mb="5">
         <Box mr="3vw" w="25vw" px="6" py="2" color="white" bg={"teal.300"}>
